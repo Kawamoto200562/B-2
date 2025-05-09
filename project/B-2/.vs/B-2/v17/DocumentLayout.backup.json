@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\",
   "Documents": [
     {
@@ -11,10 +12,15 @@
       "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
+=======
+  "WorkspaceRootPath": "C:\\Users\\Owner\\Documents\\GitHub\\B-2\\project\\B-2\\",
+  "Documents": [],
+>>>>>>> Stashed changes
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< Updated upstream
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -49,6 +55,9 @@
           ]
         }
       ]
+=======
+      "DocumentGroups": []
+>>>>>>> Stashed changes
     }
   ]
 }
