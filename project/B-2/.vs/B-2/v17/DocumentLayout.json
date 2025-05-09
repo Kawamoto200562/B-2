@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\iruru\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "sqlite3.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c",
+              "RelativeDocumentMoniker": "sqlite3.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c",
+              "RelativeToolTip": "sqlite3.c",
+              "ViewState": "AgIAAOABAAAAAAAAAAAAwPcBAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-09T02:38:50.054Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
