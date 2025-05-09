@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\B-2\\B-2\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c",
+              "RelativeToolTip": "main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-09T02:15:16.342Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
