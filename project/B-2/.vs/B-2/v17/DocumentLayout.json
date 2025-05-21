@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +34,7 @@
               "RelativeToolTip": "sqlite3.h",
               "ViewState": "AgIAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-09T02:53:11.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T02:53:11.856Z"
             },
             {
               "$type": "Document",
@@ -47,8 +46,7 @@
               "RelativeToolTip": "main.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-09T02:51:55.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T02:51:55.546Z"
             },
             {
               "$type": "Document",
@@ -58,10 +56,8 @@
               "RelativeDocumentMoniker": "sqlite3.c",
               "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c",
               "RelativeToolTip": "sqlite3.c",
-              "ViewState": "AgIAAKGzAQAAAAAAAAAAwLuzAQBIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-09T02:38:50.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T02:38:50.054Z"
             }
           ]
         }

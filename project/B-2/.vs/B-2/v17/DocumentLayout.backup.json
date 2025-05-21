@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\web\\my github\\B-2\\project\\B-2\\",
+  "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\web\\my github\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{63CA4DEB-0641-4D97-A8F1-8C59D6C0BF5B}|B-2.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,23 +22,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "sqlite3.h",
-              "DocumentMoniker": "C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.h",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.h",
               "RelativeDocumentMoniker": "sqlite3.h",
-              "ToolTip": "C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.h",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.h",
               "RelativeToolTip": "sqlite3.h",
               "ViewState": "AgIAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -47,11 +39,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "main.c",
-              "DocumentMoniker": "C:\\web\\my github\\B-2\\project\\B-2\\main.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c",
               "RelativeDocumentMoniker": "main.c",
-              "ToolTip": "C:\\web\\my github\\B-2\\project\\B-2\\main.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\main.c",
               "RelativeToolTip": "main.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
@@ -60,13 +52,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "sqlite3.c",
-              "DocumentMoniker": "C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c",
               "RelativeDocumentMoniker": "sqlite3.c",
-              "ToolTip": "C:\\web\\my github\\B-2\\project\\B-2\\sqlite3.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\GitHub\\B-2\\project\\B-2\\sqlite3.c",
               "RelativeToolTip": "sqlite3.c",
-              "ViewState": "AgIAAHoCAAAAAAAAAAAIwOMDAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAKGzAQAAAAAAAAAAwLuzAQBIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-09T02:38:50.054Z",
               "EditorCaption": ""
