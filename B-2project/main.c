@@ -44,6 +44,44 @@ void show_register_menu(sqlite3* db) {
     }
 }
 
+// 削除機能のメニュー
+void show_delete_menu(sqlite3* db) {
+    int delete_choice;
+    while (1) {
+        system("cls");
+        printf("\n== 削除メニュー ==\n");
+        printf("1:登録受験者について受験者単位の削除\n");
+        printf("2:登録受験者について受験者の試験単位の削除\n");
+        printf("0:メインメニューに戻る\n");
+        printf("番号を入力してください: ");
+        if (scanf("%d", &delete_choice) != 1) {
+            while (getchar() != '\n'); // 入力バッファクリア
+            continue;
+        }
+
+        system("cls");
+        switch (delete_choice) {
+        case 1:
+            delete_by_examinee(db); // 受験者単位で削除
+            break;
+        case 2:
+            delete_by_exam(db); // 試験単位で削除
+            break;
+        case 0:
+            printf("メインメニューに戻ります");
+            return;
+        default:
+            printf("無効な番号です。\n");
+            printf("０から２の数字で入力してください。");
+            break;
+        }
+        printf("\n続けるにはEnterを押してください...");
+        while (getchar() != '\n');
+        getchar();
+    }
+}
+
+
 // 参照機能のメニュー
 void show_reference_menu(sqlite3* db) {
     int reference_choice;
@@ -136,12 +174,10 @@ int main(void) {
             break;
         case 2:
             system("cls");
-            // 更新機能の関数をここに
             break;
         case 3:
             system("cls");
-            //変更点2
-            delete_user();
+            show_delete_menu(db);
             break;
         case 4:
             system("cls");
