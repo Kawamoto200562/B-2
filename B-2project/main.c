@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+#include "register.h"
+#include "refer2.h"
 #include "refer3.h"
 #include "delete.h"  // 変更点１
 
@@ -23,11 +25,11 @@ void show_register_menu(sqlite3* db) {
         system("cls");
 
         switch (register_choice) {
-        case 1:
-            // 新規受験者情報の登録の関数をここに
+        case 1:            
+            New_register(); // 新規受験者情報の登録
             break;
         case 2:
-            // 既登録受験者の試験結果登録の関数をここに
+            Add_register(); // 既登録受験者の試験結果登録
             break;
         case 0:
             printf("メインメニューに戻ります");
@@ -97,8 +99,8 @@ void show_reference_menu(sqlite3* db) {
         printf("7:全試験における全科目合計トップ１０\n");
         printf("8:各科目の平均点数\n");
         printf("9:全科目の平均点数\n");
-        printf("10:各科目平均点以下の受験者\n");
-        printf("11:全科目平均点以下の受験者\n");
+        printf("10:各科目平均点以下の受験者一覧\n");
+        printf("11:全科目平均点以下の受験者一覧\n");
         printf("0:メインメニューに戻る\n");
         printf("番号を入力してください: ");
         if (scanf("%d", &reference_choice) != 1) {
@@ -110,25 +112,37 @@ void show_reference_menu(sqlite3* db) {
 
         switch (reference_choice) {
         case 1:
+            // 参照機能１
+            break;
         case 2:
+            // 参照機能２
+            break;
         case 3:
+            // 参照機能４
+            break;
         case 4:
+            show_names_below_ave_by_subject(); // 参照機能５
+            break;
         case 5:
+            show_names_below_ave_by_all(); // 参照機能６
+            break;
         case 6:
+            show_subject_top_name(); // 参照機能７
+            break;
         case 7:
-            // 必要に応じて実装
+            show_total_top_name(); // 参照機能８
             break;
         case 8:
-            show_average_by_subject(db);
+            show_average_by_subject(db); // 参照機能９
             break;
         case 9:
-            show_total_average(db);
+            show_total_average(db); // 参照機能１０
             break;
         case 10:
-            show_examinees_below_subject_avg(db);
+            show_examinees_below_subject_avg(db); // 参照機能１１
             break;
         case 11:
-            show_examinees_below_total_avg(db);
+            show_examinees_below_selected_avg(db); // 参照機能１２
             break;
         case 0:
             printf("メインメニューに戻ります");
@@ -137,9 +151,8 @@ void show_reference_menu(sqlite3* db) {
             printf("無効な番号です。\n");
             printf("０から１１の数字で入力してください。");
             break;
-        }
-
-        printf("\n続けるにはEnterを押してください...");
+        }       
+        printf("\n参照メニューに戻るにはEnterを押してください...");
         while (getchar() != '\n');
         getchar();
     }
@@ -150,7 +163,7 @@ int main(void) {
     int main_choice;
 
     // データベースを開く
-    if (sqlite3_open("test2.db", &db) != SQLITE_OK) {
+    if (sqlite3_open("test.db", &db) != SQLITE_OK) {
         printf("データベースを開けません: %s\n", sqlite3_errmsg(db));
         return 1;
     }
@@ -172,8 +185,9 @@ int main(void) {
             system("cls");
             show_register_menu(db);
             break;
-        case 2:
+        case 2:            
             system("cls");
+            Update();
             break;
         case 3:
             system("cls");

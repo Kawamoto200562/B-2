@@ -141,14 +141,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="refer3.cpp" />
-    <ClCompile Include="sqlite3.cpp" />
+    <ClCompile Include="DB_Connect.c" />
+    <ClCompile Include="delete.c" />
+    <ClCompile Include="GetSubjectTopNames.c" />
+    <ClCompile Include="inputcansel.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="refer2.c" />
+    <ClCompile Include="refer3.c" />
+    <ClCompile Include="register.c" />
     <ClCompile Include="sqlite3\sqlite3.c" />
+    <ClCompile Include="wcwidth.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DB_Connect.h" />
+    <ClInclude Include="delete.h" />
+    <ClInclude Include="GetSubjectTopNames.h" />
+    <ClInclude Include="inputcansel.h" />
+    <ClInclude Include="refer2.h" />
     <ClInclude Include="refer3.h" />
+    <ClInclude Include="register.h" />
     <ClInclude Include="sqlite3\sqlite3.h" />
+    <ClInclude Include="subjectEnum.h" />
+    <ClInclude Include="wcwidth.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
