@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -37,9 +36,13 @@ void delete_by_exam(sqlite3* db) {
         const unsigned char* subject = sqlite3_column_text(stmt, 2);
         int score = sqlite3_column_type(stmt, 3) == SQLITE_NULL ? -1 : sqlite3_column_int(stmt, 3);
 
-        printf("%6d | %-10s | %-8s | %s\n", exam_id, date, subject,
-            score == -1 ? "（未入力）" : (char[12]) { 0 });
-        if (score != -1) printf("%d\n", score);
+        printf("%6d | %-10s | %-8s | ", exam_id, date, subject);
+        if (score == -1) {
+            printf("（未入力）\n");
+        }
+        else {
+            printf("%d\n", score);
+        }
         count++;
     }
     sqlite3_finalize(stmt);
@@ -52,6 +55,42 @@ void delete_by_exam(sqlite3* db) {
     int target_exam_id;
     printf("\n削除したい試験の ExamID を入力: ");
     scanf("%d", &target_exam_id);
+    getchar();
+
+    // --- 確認表示 ---
+    const char* confirm_sql =
+        "SELECT exam.exam_date, Subjects.Subject_name, score.score "
+        "FROM exam "
+        "JOIN score ON exam.exam_id = score.exam_id "
+        "JOIN Subjects ON score.Subject_id = Subjects.Subject_id "
+        "WHERE exam.exam_id = ?;";
+
+    if (sqlite3_prepare_v2(db, confirm_sql, -1, &stmt, NULL) != SQLITE_OK) goto error;
+    sqlite3_bind_int(stmt, 1, target_exam_id);
+
+    printf("\n--- 削除対象の試験情報 ---\n");
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        const unsigned char* date = sqlite3_column_text(stmt, 0);
+        const unsigned char* subject = sqlite3_column_text(stmt, 1);
+        int score = sqlite3_column_type(stmt, 2) == SQLITE_NULL ? -1 : sqlite3_column_int(stmt, 2);
+
+        printf("日付: %s | 科目: %s | 点数: ", date, subject);
+        if (score == -1) {
+            printf("（未入力）\n");
+        }
+        else {
+            printf("%d\n", score);
+        }
+    }
+    sqlite3_finalize(stmt);
+
+    char confirm;
+    printf("この試験を削除しますか？ (y/n): ");
+    confirm = getchar();
+    if (confirm != 'y' && confirm != 'Y') {
+        printf("削除をキャンセルしました。\n");
+        goto rollback;
+    }
 
     const char* delete_score = "DELETE FROM score WHERE exam_id = ?;";
     if (sqlite3_prepare_v2(db, delete_score, -1, &stmt, NULL) != SQLITE_OK) goto error;
@@ -96,6 +135,46 @@ void delete_by_examinee(sqlite3* db) {
         fgets(name, sizeof(name), stdin);
         name[strcspn(name, "\n")] = '\0';
 
+        // --- 確認表示 ---
+        const char* preview_sql =
+            "SELECT e.examinee_id, e.examinee_name, ex.exam_date, s.Subject_name, sc.score "
+            "FROM examinee e "
+            "LEFT JOIN exam ex ON e.examinee_id = ex.examinee_id "
+            "LEFT JOIN score sc ON ex.exam_id = sc.exam_id "
+            "LEFT JOIN Subjects s ON sc.Subject_id = s.Subject_id "
+            "WHERE e.examinee_name = ?;";
+
+        if (sqlite3_prepare_v2(db, preview_sql, -1, &stmt, NULL) != SQLITE_OK) goto error;
+        sqlite3_bind_text(stmt, 1, name, -1, SQLITE_TRANSIENT);
+
+        printf("\n--- 削除対象受験者の情報 ---\n");
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            int id = sqlite3_column_int(stmt, 0);
+            const unsigned char* ename = sqlite3_column_text(stmt, 1);
+            const unsigned char* date = sqlite3_column_text(stmt, 2);
+            const unsigned char* subject = sqlite3_column_text(stmt, 3);
+            int score = sqlite3_column_type(stmt, 4) == SQLITE_NULL ? -1 : sqlite3_column_int(stmt, 4);
+
+            printf("ID: %d | 名前: %s | 日付: %s | 科目: %s | 点数: ", id, ename,
+                date ? (const char*)date : "なし",
+                subject ? (const char*)subject : "なし");
+            if (score == -1) {
+                printf("（未入力）\n");
+            }
+            else {
+                printf("%d\n", score);
+            }
+        }
+        sqlite3_finalize(stmt);
+
+        char confirm;
+        printf("この受験者を削除しますか？ (y/n): ");
+        confirm = getchar();
+        if (confirm != 'y' && confirm != 'Y') {
+            printf("削除をキャンセルしました。\n");
+            goto rollback;
+        }
+
         const char* sqls[] = {
             "DELETE FROM score WHERE exam_id IN (SELECT exam_id FROM exam WHERE examinee_id IN (SELECT examinee_id FROM examinee WHERE examinee_name=?));",
             "DELETE FROM exam WHERE examinee_id IN (SELECT examinee_id FROM examinee WHERE examinee_name=?);",
@@ -113,6 +192,47 @@ void delete_by_examinee(sqlite3* db) {
         int id;
         printf("削除する受験者ID: ");
         scanf("%d", &id);
+        getchar();
+
+        // --- 確認表示 ---
+        const char* preview_sql =
+            "SELECT e.examinee_id, e.examinee_name, ex.exam_date, s.Subject_name, sc.score "
+            "FROM examinee e "
+            "LEFT JOIN exam ex ON e.examinee_id = ex.examinee_id "
+            "LEFT JOIN score sc ON ex.exam_id = sc.exam_id "
+            "LEFT JOIN Subjects s ON sc.Subject_id = s.Subject_id "
+            "WHERE e.examinee_id = ?;";
+
+        if (sqlite3_prepare_v2(db, preview_sql, -1, &stmt, NULL) != SQLITE_OK) goto error;
+        sqlite3_bind_int(stmt, 1, id);
+
+        printf("\n--- 削除対象受験者の情報 ---\n");
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            int uid = sqlite3_column_int(stmt, 0);
+            const unsigned char* ename = sqlite3_column_text(stmt, 1);
+            const unsigned char* date = sqlite3_column_text(stmt, 2);
+            const unsigned char* subject = sqlite3_column_text(stmt, 3);
+            int score = sqlite3_column_type(stmt, 4) == SQLITE_NULL ? -1 : sqlite3_column_int(stmt, 4);
+
+            printf("ID: %d | 名前: %s | 日付: %s | 科目: %s | 点数: ", uid, ename,
+                date ? (const char*)date : "なし",
+                subject ? (const char*)subject : "なし");
+            if (score == -1) {
+                printf("（未入力）\n");
+            }
+            else {
+                printf("%d\n", score);
+            }
+        }
+        sqlite3_finalize(stmt);
+
+        char confirm;
+        printf("この受験者を削除しますか？ (y/n): ");
+        confirm = getchar();
+        if (confirm != 'y' && confirm != 'Y') {
+            printf("削除をキャンセルしました。\n");
+            goto rollback;
+        }
 
         const char* sqls[] = {
             "DELETE FROM score WHERE exam_id IN (SELECT exam_id FROM exam WHERE examinee_id=?);",
