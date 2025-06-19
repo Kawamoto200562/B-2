@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:refer1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:refer1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:refer3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,45 +23,60 @@
       "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:register.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\sqlite3\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:sqlite3\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:wcwidth.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:wcwidth.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\reffer2db.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:reffer2db.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:refer2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main_db.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:main_db.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:refer3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:delete.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\g021g1035\\Downloads\\show_examinees_below_selected_avg_updated.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:register.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:delete.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\inputcansel.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:inputcansel.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:delete.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\sqlite3\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:sqlite3\\sqlite3.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\GetSubjectTopNames.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:GetSubjectTopNames.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC50A5F8-2844-449C-AB5C-AE476891B7C0}|Project1.vcxproj|solutionrelative:delete.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\g021g1035\\Downloads\\c\u30D5\u30A1\u30A4\u30EB\u3068\u30D8\u30C3\u30C0\u30FC(\u767B\u9332\u7528)\\c\uFFFDt\uFFFD@\uFFFDC\uFFFD\uFFFD\uFFFD\u0183w\uFFFDb\uFFFD_\uFFFD[(\uFFFDo\uFFFD^\uFFFDp)\\src\\DB_Connect.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\SQlite\\sqlite-amalgamation-3490200\\sqlite3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,97 +86,91 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c",
+              "RelativeToolTip": "main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-12T02:48:45.364Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "register.c",
               "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.c",
               "RelativeDocumentMoniker": "register.c",
               "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.c",
               "RelativeToolTip": "register.c",
-              "ViewState": "AgIAAGsCAAAAAAAAAAAqwC0CAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJIDAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-30T04:17:18.555Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "register.h",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.h",
-              "RelativeDocumentMoniker": "register.h",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.h",
-              "RelativeToolTip": "register.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "refer1.h",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.h",
+              "RelativeDocumentMoniker": "refer1.h",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.h",
+              "RelativeToolTip": "refer1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-30T04:14:39.508Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "inputcansel.c",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\inputcansel.c",
-              "RelativeDocumentMoniker": "inputcansel.c",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\inputcansel.c",
-              "RelativeToolTip": "inputcansel.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-27T08:33:48.329Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GetSubjectTopNames.c",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\GetSubjectTopNames.c",
-              "RelativeDocumentMoniker": "GetSubjectTopNames.c",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\GetSubjectTopNames.c",
-              "RelativeToolTip": "GetSubjectTopNames.c",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAqwAQAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-27T07:39:29.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "delete.h",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h",
-              "RelativeDocumentMoniker": "delete.h",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h",
-              "RelativeToolTip": "delete.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-27T02:33:37.043Z"
+              "WhenOpened": "2025-06-19T04:16:56.291Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "refer3.c",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.c",
-              "RelativeDocumentMoniker": "refer3.c",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.c",
-              "RelativeToolTip": "refer3.c",
-              "ViewState": "AgIAAKEAAAAAAAAAAADwv8UAAAAfAAAAAAAAAA==",
+              "Title": "refer1.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.c",
+              "RelativeDocumentMoniker": "refer1.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer1.c",
+              "RelativeToolTip": "refer1.c",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-19T02:40:15.572Z",
+              "WhenOpened": "2025-06-19T04:16:33.395Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "delete.c",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c",
-              "RelativeDocumentMoniker": "delete.c",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c",
-              "RelativeToolTip": "delete.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "reffer2db.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\reffer2db.c",
+              "RelativeDocumentMoniker": "reffer2db.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\reffer2db.c",
+              "RelativeToolTip": "reffer2db.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-27T02:09:00.335Z"
+              "WhenOpened": "2025-06-19T02:17:32.881Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
+              "Title": "main_db.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main_db.c",
+              "RelativeDocumentMoniker": "main_db.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main_db.c",
+              "RelativeToolTip": "main_db.c",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAJoCAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-06-19T01:50:07.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "DB_Connect.c",
               "DocumentMoniker": "C:\\Users\\g021g1035\\Downloads\\c\u30D5\u30A1\u30A4\u30EB\u3068\u30D8\u30C3\u30C0\u30FC(\u767B\u9332\u7528)\\c\uFFFDt\uFFFD@\uFFFDC\uFFFD\uFFFD\uFFFD\u0183w\uFFFDb\uFFFD_\uFFFD[(\uFFFDo\uFFFD^\uFFFDp)\\src\\DB_Connect.c",
               "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\c\u30D5\u30A1\u30A4\u30EB\u3068\u30D8\u30C3\u30C0\u30FC(\u767B\u9332\u7528)\\c\uFFFDt\uFFFD@\uFFFDC\uFFFD\uFFFD\uFFFD\u0183w\uFFFDb\uFFFD_\uFFFD[(\uFFFDo\uFFFD^\uFFFDp)\\src\\DB_Connect.c",
@@ -162,42 +183,144 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "main.c",
-              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c",
-              "RelativeDocumentMoniker": "main.c",
-              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\main.c",
-              "RelativeToolTip": "main.c",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
+              "Title": "refer3.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.c",
+              "RelativeDocumentMoniker": "refer3.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.c",
+              "RelativeToolTip": "refer3.c",
+              "ViewState": "AgIAANwAAAAAAAAAAAAAAOwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-05-12T02:48:45.364Z"
+              "WhenOpened": "2025-05-19T02:40:15.572Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
+              "Title": "refer2.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer2.c",
+              "RelativeDocumentMoniker": "refer2.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer2.c",
+              "RelativeToolTip": "refer2.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-06-10T05:36:34.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "wcwidth.h",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.h",
+              "RelativeDocumentMoniker": "wcwidth.h",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.h",
+              "RelativeToolTip": "wcwidth.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-10T05:13:08.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "wcwidth.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.c",
+              "RelativeDocumentMoniker": "wcwidth.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\wcwidth.c",
+              "RelativeToolTip": "wcwidth.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-06-05T06:07:41.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "register.h",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.h",
+              "RelativeDocumentMoniker": "register.h",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\register.h",
+              "RelativeToolTip": "register.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-30T04:14:39.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "inputcansel.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\inputcansel.c",
+              "RelativeDocumentMoniker": "inputcansel.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\inputcansel.c*",
+              "RelativeToolTip": "inputcansel.c*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-27T08:33:48.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "delete.h",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h",
+              "RelativeDocumentMoniker": "delete.h",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.h",
+              "RelativeToolTip": "delete.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-27T02:33:37.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "delete.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c",
+              "RelativeDocumentMoniker": "delete.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\delete.c",
+              "RelativeToolTip": "delete.c",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-27T02:09:00.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "show_examinees_below_selected_avg_updated.c",
+              "DocumentMoniker": "C:\\Users\\g021g1035\\Downloads\\show_examinees_below_selected_avg_updated.c",
+              "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\show_examinees_below_selected_avg_updated.c",
+              "ToolTip": "C:\\Users\\g021g1035\\Downloads\\show_examinees_below_selected_avg_updated.c",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\show_examinees_below_selected_avg_updated.c",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAHsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-06-18T08:26:29.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "refer3.h",
               "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.h",
               "RelativeDocumentMoniker": "refer3.h",
               "ToolTip": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\refer3.h",
               "RelativeToolTip": "refer3.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-19T02:46:45.142Z"
+              "WhenOpened": "2025-05-19T02:46:45.142Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "stdio.h",
               "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
               "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h",
-              "ViewState": "AgIAAG0CAAAAAAAAAAASwIUCAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAG4CAAAAAAAAAAAawIcCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-15T05:53:16.521Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": "sqlite3.c",
               "DocumentMoniker": "C:\\Users\\g021g1035\\Documents\\B-2Maeda\\B-2project\\sqlite3\\sqlite3.c",
               "RelativeDocumentMoniker": "sqlite3\\sqlite3.c",
@@ -209,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "sqlite3.h",
               "DocumentMoniker": "C:\\Users\\Owner\\SQlite\\sqlite-amalgamation-3490200\\sqlite3.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Owner\\SQlite\\sqlite-amalgamation-3490200\\sqlite3.h",

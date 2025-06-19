@@ -10,11 +10,25 @@
 void delete_by_exam(sqlite3* db) {
     sqlite3_stmt* stmt;
     char* err_msg = NULL;
+    char input[16];
+    int search = 0;
 
-    int search;
-    printf("検索方法（1: 名前, 2: ID）: ");
-    scanf("%d", &search);
-    getchar();
+    while (1) {
+        printf("検索方法を選んでください（1: 名前, 2: ID, b: 戻る）: ");
+        if (fgets(input, sizeof(input), stdin) == NULL) {
+            printf("入力エラーが発生しました。\n");
+            continue;
+        }
+        input[strcspn(input, "\n")] = '\0';  
+
+        if (strcmp(input, "b") == 0) return;
+
+        if (sscanf(input, "%d", &search) != 1 || (search != 1 && search != 2)) {
+            printf("無効な入力です。1、2、または b を入力してください。\n");
+            continue;
+        }
+        break;
+    }
 
     int examinee_id = -1;
 
@@ -100,6 +114,7 @@ void delete_by_exam(sqlite3* db) {
     int target_exam_id;
     printf("\n削除したい試験の ExamID を入力: ");
     scanf("%d", &target_exam_id);
+    while (getchar() != '\n');
 
     // 対象ExamIDがこの受験者のものか確認
     const char* verify_sql = "SELECT 1 FROM exam WHERE exam_id = ? AND examinee_id = ?;";
@@ -153,11 +168,25 @@ error:
 void delete_by_examinee(sqlite3* db) {
     sqlite3_stmt* stmt;
     char* err_msg = NULL;
+    char input[16];
+    int search = 0;
 
-    int search;
-    printf("検索方法（1: 名前, 2: ID）: ");
-    scanf("%d", &search);
-    getchar();
+    while (1) {
+        printf("検索方法を選んでください（1: 名前, 2: ID, b: 戻る）: ");
+        if (fgets(input, sizeof(input), stdin) == NULL) {
+            printf("入力エラーが発生しました。\n");
+            continue;
+        }
+        input[strcspn(input, "\n")] = '\0'; 
+
+        if (strcmp(input, "b") == 0) return;
+
+        if (sscanf(input, "%d", &search) != 1 || (search != 1 && search != 2)) {
+            printf("無効な入力です。1、2、または b を入力してください。\n");
+            continue;
+        }
+        break;
+    }
 
     if (sqlite3_exec(db, "BEGIN TRANSACTION;", 0, 0, &err_msg) != SQLITE_OK) goto error;
 

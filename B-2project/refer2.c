@@ -1,25 +1,4 @@
-﻿/*
-やりたいこと
-文字の削除
-void clear_screen() {
-    // ANSIエスケープシーケンスで画面をクリア＆カーソルを先頭へ移動
-    printf("\033[2J\033[H");
-    fflush(stdout);
-}
-
-後は何処に組み込むか、fflushの後に、「エンターを押してください」って表示するのがいいかも！
-細かいコメント？
-選択式で選べるようになったらいいよね　➡１
-確認画面もあった方が良いかも（表示しますか？）
-
-Getsubject
-全体の流れの理解
-とくに文字列のとことか
-関数のプロトタイプ宣言
-関数化出来ない？
-*/
-
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -27,7 +6,7 @@ Getsubject
 #include <ctype.h>   //memmove
 #include <wchar.h>
 #include "subjectEnum.h"
-#include "GetSubjectTopNames.h"
+#include "reffer2db.h"
 #include "refer2.h"
 
 /*
@@ -40,19 +19,22 @@ Getsubject
 #define MAX_SUBJECT 11
 #define INPUT_BUFFER_SIZE 128
 
-
 //関数プロトタイプの宣言
-Subject getSubjectFromInput(int subjectId);    //入力された数値を元に、科目情報を返す関数
-Subject SelectSubject(Subject subject);        //選択科目を入力する関数
-bool Choice(const char* msg);                   //1か2で選ばせるときに使う関数
-bool CheckConfirmingExamDate(const int countExamDates,const char* inputExamDate,ExamData* printExamDates);       //ユーザーに入力された試験日が、一致しているかどうか判定する関数
-int IntegerInput(const char* prompt);           //整数入力を安全に受け取る関数（値が条件に正しいかは関係ない）
-int setLocaleUTF_JP();                          //SQL文の文字出力の際、文字ずれが発生しないように、Localeをセットする関数
-void GetSubjectTopNames(const Subject subject); //これでGetSubjectTopNameに飛ぶ
-void clear_screen();                            //残っている字を消す
-void trim(char* str);                           //機能5,6　入力文字の前後空白を削除する関数(strcomに使う）
-void printExamDate(int countExamDates, ExamData* printExamDates);    //機能5,6試験日一覧を表示する関数
-void SelectExamDateByUser(char* inputExamDate);
+Subject getSubjectFromInput(int subjectId);                                                                     //入力された数値を元に、科目情報を返す関数
+Subject SelectSubject(Subject subject, const char* prompt);                                                     //選択科目を入力する関数
+bool Choice(const char* msg);                                                                                   //1か2で選ばせるときに使う関数
+bool CheckConfirmingExamDate(const int countExamDates,const int inputExamDate,const int* printExamDates);       //ユーザーに入力された試験日が、一致しているかどうか判定する関数
+bool CheckFinalizeExamDate(const int inputExamDate,const int* printExamDates);                                  //機能2,4,5,6用　ユーザーが入力した日付の結果を出力するかどうかの意思決定を聞く関数
+bool printExamDate(int countExamDates, int* printExamDates);                                                    //機能2,4,5,6試験日一覧を表示する関数
+bool isExistData(void);                                                                                         //データベースにデータが格納されているか調べる関数
+int IntegerInput(const char* prompt);                                                                           //整数入力を安全に受け取る関数（値が条件に正しいかは関係ない）
+int setLocaleUTF_JP(void);                                                                                      //SQL文の文字出力の際、文字ずれが発生しないように、Localeをセットする関数
+int selectExamDate(const char* msg);                                                                            //機能2,4,5,6用　ユーザーに試験日を選んでもらう関数
+void GetSubjectTopNames(const Subject subject);                                                                 //これでGetSubjectTopNameに飛ぶ
+void clear_screen(void);                                                                                            //残っている字を消す
+void printNoExistDataInDB(void);                                                                                    //データベースにデータが一件も登録されていない時の処理
+void enterToReturnMenu(void);
+
 
 /*
 #ifdef _WIN32
@@ -62,213 +44,239 @@ void SelectExamDateByUser(char* inputExamDate);
 */
 
 
-//機能5(試験実施日毎の各科目平均点数以下の受験者一覧)
-int show_names_below_ave_by_subject() {
+//機能2(試験実施日毎の全科目トップ5)
+int show_date_top_name() {
+    setLocaleUTF_JP();
+
+    int decidedExamDate;            //ユーザーから入力された、表示する日付を保持する変数
+    bool existData = true;          //データベースにデータが一件でも存在するかを調べる変数
+    bool end = true;                //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
+
+    if ((existData = isExistData()) == true) {
+        do {
+            decidedExamDate = selectExamDate("試験実施日毎の全科目トップ5を表示します");
+            if (decidedExamDate == 0) {
+                //enterToReturnMenu();
+                return 0;       //selectExamDateで「参照機能選択一覧に戻る」が選択された場合、参照機能選択一覧へ戻る
+            }
+
+            GetTopScoresByDate(decidedExamDate);
+
+            //表示し終えたら、続けて表示するかどうかを確認
+            end = Choice("\n続けて出力しますか？ 1:終了する、2:続行");
+
+        } while (end == false);
+    }
+    else {
+        printNoExistDataInDB();
+    }
+
+    //enterToReturnMenu();
+
+
+    return 0;
+}
+
+
+ //機能4(試験実施日毎の全科目平均点数)
+int show_avarage_score_by_exam_date() {
 
     setLocaleUTF_JP();
 
-    int countExamDates = 0;         //試験日を数える変数
-    char inputExamDate[128];        //ユーザーが日付を入力された関数
     int decidedExamDate;            //ユーザーから入力された、表示する日付を保持する変数
-    int year, month, day;           //ユーザーから入力された「YYYY-MM-DD」型の文字列をint型へ変換する為の変数
-    bool matchExamDate=false;       //入力された日付が、一致しているかどうかのフラグ
+    bool existData = true;          //データベースにデータが一件でも存在するかを調べる変数
     bool end = true;                //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
-    Subject subject = Unselected;   //教科情報を保持するSubject型の変数
 
-
-    //機能通り平均点数以下の受験者一覧を表示した後、「続ける」を選択した場合、繰り返す
-    do {
-        printf("試験実施日毎の各科目平均点数以下の受験者一覧を表示します\n\n");
-
-
-        //ExamData型へ、試験日をYYYY-MM-DD型で保存
-        ExamData* printExamDates = getExamData(&countExamDates);
-        if (printExamDates == NULL) {
-            fprintf(stderr, "試験日の取得に失敗しました\n");
-            return 1;
-        }
+    if ((existData = isExistData()) == true) {
         do {
-            matchExamDate = false;
+            decidedExamDate = selectExamDate("試験実施日毎の全科目平均点数を表示します");
+            if (decidedExamDate == 0) {
+                //enterToReturnMenu();
+                return 0;       //selectExamDateで「参照機能選択一覧に戻る」が選択された場合、参照機能選択一覧へ戻る
+            }
 
-            //試験日一覧を表示
-            printExamDate(countExamDates, printExamDates);
+            GetAverageScoreByDate(decidedExamDate);
 
+            //表示し終えたら、続けて表示するかどうかを確認
+            end = Choice("\n続けて出力しますか？ 1:終了する、2:続行");
 
-            //ユーザーから日付を入力してもらう関数
-            SelectExamDateByUser(inputExamDate);
+        } while (end == false);
+    }
+    else {
+        printNoExistDataInDB();
+    }
 
-            // 改行を除去
-            inputExamDate[strcspn(inputExamDate, "\n")] = '\0';
+    //enterToReturnMenu();
 
-            //文字の前後の空白を処理する関数
-            trim(inputExamDate);
-
-            //入力された文字が、一致しているか判定
-            matchExamDate = CheckConfirmingExamDate(countExamDates, inputExamDate, printExamDates);
-        } while (matchExamDate == false);
-
-        //一致した場合、printExamDatesを解放し、入力情報のみを管理
-        free(printExamDates);
-
-
-        //inputExamDateを,「2025-01-01」形式から、「20250101」形式へ変換、decidedExamDayへ代入する処理
-        if (sscanf_s(inputExamDate, "%4d-%2d-%2d", &year, &month, &day) != 3) {
-            fprintf(stderr, "日付の形式が正しくありません\n");
-            return 1;
-        }
-
-        decidedExamDate = year * 10000 + month * 100 + day;
-
-        //-------ここまでがユーザーに試験日を選択してもらう処理--------
-
-
-        //続けて、教科を選択する
-        printf("平均点数以下の受験者一覧を表示したい科目を選択\n");
-        subject = SelectSubject(subject);
-        int tmp = subject;
-
-
-        //メニュー画面へ戻る、または指定された試験日かつ該当科目の平均点数以下の受験者一覧を表示
-        switch (subject) {
-        case Unselected: printf("科目が選ばれていません！"); //安全策の為、一応載せておく
-            break;
-        case BackSelectMenu: printf("参照機能選択一覧に戻ります\n");
-            break;
-        default: GetNamesUnderAveBySubject(subject, decidedExamDate);    // 入力された日と、教科を引数にして、各科目平均点数以下の受験者一覧を表示
-            break;
-        }
-        
-        //もし、GetNamesUnderAveBySubject()が起動した場合、続けて科目選択をするか確認
-        if (subject != BackSelectMenu) {
-            end = Choice("続けて出力しますか？ 1:終了する、2:続行");
-        }
-
-    } while (subject != BackSelectMenu && end == false);
 
     return 0;
+}
+
+
+//機能5(試験実施日毎の各科目平均点数以下の受験者一覧)
+int show_names_below_ave_by_subject() {
+
+    int decidedExamDate;            //ユーザーから入力された、表示する日付を保持する変数
+    bool end = true;                //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
+    bool existData = true;          //データベースにデータが一件でも存在するかを調べる変数
+    Subject subject = Unselected;   //教科情報を保持するSubject型の変数
+
+    setLocaleUTF_JP();
+
+    if ((existData = isExistData()) == true) {
+
+        //機能通り平均点数以下の受験者一覧を表示した後、「続ける」を選択した場合、繰り返す
+        do {
+
+            decidedExamDate = selectExamDate("試験実施日毎の各科目平均点数以下の受験者一覧を表示します");
+            if (decidedExamDate == 0) {
+                //enterToReturnMenu();
+                return 0;       //selectExamDateで「参照機能選択一覧に戻る」が選択された場合、参照機能選択一覧へ戻る
+            }
+
+            //続けて、教科を選択する
+            subject = SelectSubject(subject, "平均点数以下の受験者一覧を表示したい科目を選択\n");
+
+            //メニュー画面へ戻る、または指定された試験日かつ該当科目の平均点数以下の受験者一覧を表示
+            switch (subject) {
+            case Unselected: printf("科目が選ばれていません！"); //安全策の為、一応載せておく
+                break;
+            case BackSelectMenu: printf("参照機能選択一覧に戻ります\n");
+                break;
+            default: clear_screen();
+                GetNamesUnderAveBySubject(subject, decidedExamDate);    // 入力された日と、教科を引数にして、各科目平均点数以下の受験者一覧を表示
+                break;
+            }
+
+            //もし、GetNamesUnderAveBySubject()が起動した場合、続けて科目選択をするか確認
+            if (subject != BackSelectMenu) {
+                end = Choice("\n続けて出力しますか？ 1:終了する、2:続行");
+            }
+
+        } while (subject != BackSelectMenu && end == false);
+    }
+    else {
+        printNoExistDataInDB();
+    }
+
+    //enterToReturnMenu();
+
+    return 0;
+
 }
 
 
 //機能6(試験実施日毎の全科目平均点数以下の受験者一覧)
 int show_names_below_ave_by_all() {
 
+    int decidedExamDate;            //ユーザーから入力された、表示する日付を保持する変数
+    bool end = true;                //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
+    bool existData = true;          //データベースにデータが一件でも存在するかを調べる変数  
+    Subject subject = Unselected;   //教科情報を保持するSubject型の変数
+
     setLocaleUTF_JP();
 
-    int countExamDates = 0;     //試験日を数える変数
-    char inputExamDate[128];    //ユーザーが日付を入力された関数
-    int decidedExamDate;         //ユーザーから入力された、表示する日付を保持する変数
-    int year, month, day;   //ユーザーから入力された「YYYY-MM-DD」型の文字列をint型へ変換する為の変数
-    bool matchExamDate = false;    //入力された日付が、一致しているかどうかのフラグ
-    bool end = true;                         //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
+    if ((existData = isExistData()) == true) {
 
-
-    printf("試験実施日毎の全科目平均点数以下の受験者一覧を表示します\n\n");
-
-
-    //ExamData型へ、試験日をYYYY-MM-DD型で保存
-    ExamData* printExamDates = getExamData(&countExamDates);
-    if (printExamDates == NULL) {
-            fprintf(stderr, "試験日の取得に失敗しました\n");
-            return 1;
-        }
+        //機能通り平均点数以下の受験者一覧を表示した後、「続ける」を選択した場合、繰り返す
         do {
-            matchExamDate = false;
 
-            //試験日一覧を表示
-            printExamDate(countExamDates, printExamDates);
+            decidedExamDate = selectExamDate("試験実施日毎の全科目平均点数以下の受験者一覧を表示します");
+            if (decidedExamDate == 0) {
+                //enterToReturnMenu();
+                return 0;       //selectExamDateで「参照機能選択一覧に戻る」が選択された場合、参照機能選択一覧へ戻る
+            }
 
+            //入力された日を引数にして、全科目平均点数以下の受験者一覧を表示
 
-            //ユーザーから日付を入力してもらう関数
-            SelectExamDateByUser(inputExamDate);
+            GetNamesUnderAveByAll(decidedExamDate);
 
-            // 改行を除去
-            inputExamDate[strcspn(inputExamDate, "\n")] = '\0';
+            //表示し終えたら、続けて表示するかどうかを確認
+            end = Choice("\n続けて出力しますか？ 1:終了する、2:続行");
 
-            //文字の前後の空白を処理する関数
-            trim(inputExamDate);
+        } while (end == false);
+    }
+    else {
+        printNoExistDataInDB();
+    }
 
-            //入力された文字が、一致しているか判定
-            matchExamDate = CheckConfirmingExamDate(countExamDates, inputExamDate, printExamDates);
-        } while (matchExamDate == false);
-
-        //一致した場合、printExamDatesを解放し、入力情報のみを管理
-        free(printExamDates);
-
-
-        //inputExamDateを,「2025-01-01」形式から、「20250101」形式へ変換、decidedExamDayへ代入する処理
-        if (sscanf_s(inputExamDate, "%4d-%2d-%2d", &year, &month, &day) != 3) {
-            fprintf(stderr, "日付の形式が正しくありません\n");
-            return 1;
-        }
-
-        decidedExamDate = year * 10000 + month * 100 + day;
-
-    /*
-    * 入力された日を引数にして、全科目平均点数以下の受験者一覧を表示
-    * 受験者ごとに、選択した科目の合計平均点を算出する方が良いらしいソース（質問スレッド）
-    */
-
-    getchar();
+    //enterToReturnMenu();
 
     return 0;
+
 }
+
 
 //機能7(全試験における各科目合計トップ１０)
 int show_subject_top_name() {
 
+    bool existData = true;      //データベースにデータが一件でも存在するかを調べる変数
+
     setLocaleUTF_JP();
 
-    //subjectEnum.h で定義したsubject型を宣言
-    Subject subject = Unselected;
-    bool end = true;                         //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
+    if ((existData = isExistData()) == true) {
 
-    do {
-        printf("全試験における各科目合計トップ10を出力します\n");
-        subject=SelectSubject(subject);
+        //subjectEnum.h で定義したsubject型を宣言
+        Subject subject = Unselected;
+        bool end = true;                         //各科目合計トップ10出力後に、続けるかどうかのフラグ(初期はtrue)
 
-        //メニュー画面へ戻る、または該当科目のトップ10を表示
-        switch (subject) {
-        case Unselected: printf("科目が選ばれていません！"); //安全策の為、一応載せておく
-            break;
-        case BackSelectMenu: printf("参照機能選択一覧に戻ります\n");
-            break;
-        default: GetSubjectTopNames(subject);
-            break;
-        }
+        do {
+            clear_screen();
 
-        getchar();
+            subject = SelectSubject(subject, "全試験における各科目合計トップ10を出力します\n");
+
+            clear_screen();
+
+            //メニュー画面へ戻る、または該当科目のトップ10を表示
+            switch (subject) {
+            case Unselected: printf("科目が選ばれていません！"); //安全策の為、一応載せておく
+                break;
+            case BackSelectMenu: printf("参照機能選択一覧に戻ります\n");
+                break;
+            default: GetSubjectTopNames(subject);
+                break;
+            }
 
 
-        //もし、GetSubjectTopNames()が起動した場合、続けて科目選択をするか確認
-        if (subject != BackSelectMenu ) {
-            end = Choice("続けて出力しますか？ 1:終了する、2:続行");
-        }
+            //もし、GetSubjectTopNames()が起動した場合、続けて科目選択をするか確認
+            if (subject != BackSelectMenu) {
+                end = Choice("\n続けて出力しますか？ 1:終了する、2:続行");
+            }
 
-        //BackSelectMenuが選択されておらず、且つCheckRetryで「続けない」を選択した場合、終了
-    } while (subject != BackSelectMenu && end == false);
+            //BackSelectMenuが選択されておらず、且つCheckRetryで「続けない」を選択した場合、終了
+        } while (subject != BackSelectMenu && end == false);
+    }
+    else {
+        printNoExistDataInDB();
+    }
 
+    //enterToReturnMenu();
     return 0;
 }
-
 
 
 //機能8(全試験における全科目合計トップ１０)
 int show_total_top_name() {
 
-    setLocaleUTF_JP();
+    bool existData = true;      //データベースにデータが一件でも存在するかを調べる変数
 
-    printf("全試験における全科目合計トップ１０を表示します\n\n");
+    if ((existData = isExistData()) == true) {
 
-GetTotalTopName();
+        setLocaleUTF_JP();
 
-printf("\n\n参照機能選択一覧へ戻ります\n");
+        printf("全試験における全科目合計トップ１０を表示します\n\n");
 
-getchar();
+        GetTotalTopName();
+    }
+
+    else {
+        printNoExistDataInDB();
+    }
+
+    //enterToReturnMenu();
 
 return 0;
 }
-
-
 
 
 //getSubjectを元に、subjectへ科目情報を代入する関数
@@ -290,16 +298,18 @@ Subject getSubjectFromInput(int getSubject) {
     }
 }
 
+
 //どの科目を選択するか選ぶ関数(機能5,7)
-Subject SelectSubject(Subject subject){
+Subject SelectSubject(Subject subject, const char* prompt){
 
     int subjectId = 0;                           //subjectIdへ教科情報を入力に使用する変数
-    bool returnToMenu = false;                  ////参照機能選択一覧に戻るかどうかのフラグ
+    bool returnToMenu = false;                  //参照機能選択一覧に戻るかどうかのフラグ
 
     do {
 
         //入力が1～11の整数になるまでループ
         while (1) {
+            printf("%s",prompt);
             printf("1:国語 2:数学 3:英語 4:日本史 5:世界史 6:地理 7:物理 8:化学 9:生物 10:各科目 11:参照機能選択一覧に戻る\n\n");
 
             subjectId = IntegerInput("1～11の整数を入力して下さい:");   //IntegerInput関数を通して、getSubjectに整数を格納
@@ -308,6 +318,7 @@ Subject SelectSubject(Subject subject){
                 break;
             }
             else {
+                clear_screen();
                 printf("無効な入力です。1～11の整数を入力してください\n");
             }
         }
@@ -317,9 +328,13 @@ Subject SelectSubject(Subject subject){
         //「参照機能選択一覧に戻る」が選択された場合、ユーザーの意思を確認(ChoiceBack関数へ)
         if (subject == BackSelectMenu) {
             returnToMenu = Choice("参照機能選択一覧へ戻りますか？ 1:戻る、2:続行");
+            if (returnToMenu == false) {
+                clear_screen();
+                printf("参照機能選択一覧へ戻らないが選択されました。\n\n");
+            }
         }
 
-    } while (subject == BackSelectMenu && returnToMenu == false);     //BackSelectMenuが選択され、且つ参照機能選択一覧に戻らないが選択された場合
+    } while (subject == BackSelectMenu && returnToMenu == false);     //BackSelectMenuが選択され、且つ参ユーザーが「参照機能選択一覧に戻らない」を選択した時のみ、ループを続ける
 
     return subject;
 }
@@ -339,50 +354,133 @@ bool Choice(const char* msg) {
             return false;
         }
         else {
-            printf("無効な入力です。1または2を入力してください\n");
+            clear_screen();
+            printf("無効な入力です。正しい選択は 1 または 2 です\n");
         }
+        tmp++;
     }
 }
 
-//機能5,6　ユーザーに入力された文字が、試験日と一致しているか判定
-bool CheckConfirmingExamDate(const int countExamDates, const char* inputExamDate, ExamData* printExamDates) {
-    bool matchExamDate = false;
-        for (int i = 0; i < countExamDates; i++) {
-            if (strcmp(inputExamDate, printExamDates[i].exam_day) == 0) {
-                matchExamDate = true;
-                break;
-            }
-        }
 
-        if (matchExamDate == true) {
-            //画面クリアするならココ
-            printf("%sの各科目平均点数以下の受験者一覧を表示します\n", inputExamDate);
-            return true;
-        }
-        else {
-            printf("入力エラーです。もう一度入力してください\n");
-            return false;
-        }
+//機能2,4,5,6　ユーザーに入力された文字が、試験日と一致しているか判定
+bool CheckConfirmingExamDate(const int countExamDates,const int inputExamDate, const int* printExamDates) {
+    bool matchExamDate = false;
+    if (inputExamDate > 0 && inputExamDate <= countExamDates) {
+        return true;
+    }
+    //参照機能一覧へ戻るかどうかに対し、参照機能へ戻らないを選択した場合の処理
+    else if (inputExamDate==0) {
+        clear_screen();
+        printf("参照機能一覧へ戻らないが選択されました。\n\n");
+        return false;
+    }
+    else {
+        clear_screen();
+        printf("「1」から「%d」または「0」を半角整数で入力してください\n\n", countExamDates);
+        return false;
+    }
 }
 
+//機能2,4,5,6 ユーザーが選択した日付で良いか、確認する関数
+bool CheckFinalizeExamDate(const int inputExamDate,const int* printExamDates) {
+    int examDate = printExamDates[(inputExamDate-1)];
+    int year = examDate / 10000;
+    int month = (examDate % 10000) / 100;
+    int day = examDate % 100;
+    clear_screen();
+    printf("選択した日程 [%04d-%02d-%02d] でよろしいですか 1:「はい」2:「いいえ」\n",year,month,day);
+    bool finalize = Choice("");
+    if (finalize == true) {
+        return true;
+    }
+    else {
+        clear_screen();
+        return false;
+    }
+}
 
-//データを文字型で受け取り、整数型へ変換して値を返す関数（エラー表示が２回出るバグあり,エラーという表示も冗長？　後で直す）機能7,8用
+//機能2,4,5,6用ユーザーに試験日を入力してもらう関数
+bool printExamDate(int countExamDates, int* printExamDates) {
+
+    int examDate, year, month, day = 0;
+
+    //試験日が存在していれば
+    if (countExamDates > 0) {
+        //結果の表示
+        printf("%d日の試験日があります\n", countExamDates);
+        printf("各試験日の日程\n\n");
+
+        for (int i = 0; i < countExamDates; i++) {
+            examDate = printExamDates[i];
+            year = examDate / 10000;
+            month = (examDate % 10000) / 100;
+            day = examDate % 100;
+            printf("%d : %04d-%02d-%02d\n", i + 1, year, month, day);
+        }
+        printf("\n");
+        return true;
+    }
+    //試験日が存在しない場合、「試験日が存在していません」と表示し、falseを返す
+    else {
+        printf("試験日が存在しません\n");
+        printf("試験日とテスト結果を登録してください\n\n");
+        //enterToReturnMenu();
+    }
+    return false;
+}
+
+//データベースにデータが登録されているかを、スコアデータを使って調べる関数(受検者データ（score無し）は、「データが入ってないと見なす」)
+bool isExistData(void) {
+    int existData = 0;
+    existData = CheckExistData();
+    //データが存在するなら、trueを、しなければfalseを返す
+    return (existData == 1) ?  true : false;
+}
+
+//データを文字型で受け取り、整数型へ変換して値を返す関数
 int IntegerInput(const char* prompt) {
-    char buffer[128];
-    int input;
-    char extra; //数字以外の余分な文字を受取る変数
+    char buffer[INPUT_BUFFER_SIZE];
+    long value;
+    char* endptr;
 
-    //入力が正しく整数として読み取られるまでループ
     while (1) {
         printf("%s", prompt);
-        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {     //ユーザーに入力してもらう処理
-
-            //入力された文字データを整数データへ変換、変換できない場合はエラー処理。また、(unsigned int)sizeof(extra)で、「3d」のような入力をエラーに出来るよう処理
-            if (sscanf_s(buffer, "%d %c", &input, &extra, (unsigned int)sizeof(extra)) == 1) {
-                return input;
-            }
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+            clearerr(stdin);
+            printf("入力の読み取りに失敗しました。再度入力してください\n\n");
+            continue;
         }
-        printf("エラー!%s", prompt);
+
+        // 改行がなければ、残りの入力を破棄する
+        if (strchr(buffer, '\n') == NULL) {
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF) {}
+        }
+
+        errno = 0;
+        value = strtol(buffer, &endptr, 10);
+
+        // 数値変換が失敗した場合
+        if (endptr == buffer) {
+            printf("無効な入力です。半角整数のみを入力してください\n\n");
+            continue;
+        }
+
+        // 余分な文字のチェック（ホワイトスペースはスキップ）
+        while (isspace((unsigned char)*endptr)) {
+            endptr++;
+        }
+        if (*endptr != '\0' && *endptr != '\n') {
+            printf("無効な入力です。半角整数のみを入力してください\n\n");
+            continue;
+        }
+
+        // オーバーフローまたは範囲外のチェック
+        if ((errno == ERANGE && (value == LONG_MAX || value == LONG_MIN)) || value > INT_MAX || value < INT_MIN) {
+            printf("入力された数値が大きすぎるか小さすぎるため、整数に変換できません\n\n");
+            continue;
+        }
+        return (int)value;
     }
 }
 
@@ -392,6 +490,78 @@ int setLocaleUTF_JP() {
         fprintf(stderr, "ロケールの設定に失敗しました。\n");
         return 1;
     }
+    return 0;
+}
+
+
+//ユーザーに試験日を入力してもらう関数
+int selectExamDate(const char* msg) {
+
+    int countExamDates = 0;         //試験日の日数を数える変数
+    int inputExamDate = 0;          //ユーザーに日付を入力してもらう変数
+    int decidedExamDate = 0;        //機能5.6に確定したint型の試験日を返す変数
+    bool matchExamDate = false;     //入力された試験日が存在しているかどうかを確認するフラグ
+    bool BackToMenu = false;        //参照選択一覧へ戻るかを確認するフラグ
+    bool finalizeExamDate = false;  //試験日を確定するかを確認するフラグ
+    bool isExistExamDate = true;    //試験日が存在するかどうかを確認するフラグ
+
+    clear_screen();
+
+    //printExamDateへ、試験日をYYYYMMDDの形且つint型で保存
+    int* printExamDates = getExamData(&countExamDates);
+    if (printExamDates == NULL) {
+        fprintf(stderr, "試験日の取得に失敗しました\n");
+        return -1;
+    }
+    //選んだ試験日をfinalizeExamDateで確認し,OKならループを抜ける
+    do {
+        //inputExamDateが日付一覧と一致していれば、ループを抜ける（例 1:20250101 2:20250102 で、１か２が入力されている場合）
+        do {
+            printf("%s\n\n",msg);
+
+            matchExamDate = false;
+            //db側で、int型で取得完了
+                //試験日一覧を表示
+            isExistExamDate = printExamDate(countExamDates, printExamDates);
+
+            //もし試験日が存在しないのであれば、０を返し、プログラムを終了させる
+            if (isExistExamDate == false) {
+                return 0;
+            }
+
+            printf("0 : 参照機能に戻る\n\n");
+
+            printf("試験日を1から%dの半角整数で入力してください(0で参照機能一覧へ戻ります) 例:1\n\n", countExamDates);
+
+            //ユーザーから日付を入力してもらう関数
+            inputExamDate = IntegerInput("入力:");
+
+            //0が入力された場合、参照機能一覧へ戻るか聞き、戻るが選択されると、プログラムを終了
+            if (inputExamDate == 0) {
+                BackToMenu = Choice("参照機能一覧へ戻りますか？ 1:はい　2:いいえ");
+                if (BackToMenu == true) {
+                    free(printExamDates);
+                    return 0;       //もし、参照機能一覧へ戻るなら、0を返す
+                }
+            }
+
+            //入力された文字が、日付一覧と一致しているかどうか判定（例 1:20250101 2:20250102 で、１か２が入力されている場合）
+            matchExamDate = CheckConfirmingExamDate(countExamDates, inputExamDate, printExamDates);
+        } while (!matchExamDate);
+
+        //日付が選択された場合、その日付で良いかをユーザーに確認する関数
+        finalizeExamDate = CheckFinalizeExamDate(inputExamDate, printExamDates);
+    } while (!finalizeExamDate);
+
+    //decidedExamDateに、ユーザーが選んだ日付を格納
+    decidedExamDate = printExamDates[(inputExamDate - 1)];
+
+    //printExamDatesを解放し、入力情報のみを管理
+    free(printExamDates);
+
+    clear_screen();
+
+    return decidedExamDate;
 }
 
 //Subject型を値渡しする
@@ -402,56 +572,29 @@ void GetSubjectTopNames(const Subject subject) {
 //画面をクリアする関数
 void clear_screen() {
     // ANSIエスケープシーケンスで画面をクリア＆カーソルを先頭へ移動
-    printf("clear関数起動！\n");
     printf("\033[2J\033[H");
     fflush(stdout);
 }
 
-//機能5,機能6専用(入力された文字の調整（前後の空白処理）)
-void trim(char* str) {
-    char* start = str;  //引数の文字列の先頭を表すポインタ
-    char* end;          //文字列の末尾の位置
-
-    //先頭の空白文字をスキップ
-    while (*start && isspace((unsigned char) * start)){ 
-        start++;    //文字列の最初から調べ、空白文字である限り、startポインタを進める
-    }
-
-    //文字列全体が空白の場合の処理
-    if (*start == '\0') {
-        str[0] = '\0';
-        return;
-    }
-
-    //末尾の空白文字を見つける
-    end = start + strlen(start) - 1;
-    while (end > start && isspace((unsigned char)*end)) {
-        end--;
-    }
-
-    //新しい終端位置の設定
-    *(end + 1) = '\0';
-
-    //先頭の空白を除いた部分を元の文字列領域にコピー
-    if (start != str) {
-        memmove(str, start, strlen(start) + 1);
-    }
+//データベースにデータが一件も登録されていなかった時の処理
+void printNoExistDataInDB() {
+    printf("データが登録されていません\n");
+    printf("データを登録してください\n\n"); 
+    //reffer2のメインプログラムの方でenterToReturnMenuを呼び出し
 }
 
-void printExamDate(int countExamDates, ExamData* printExamDates) {
-    //結果の表示
-    printf("%d日の試験日があります\n", countExamDates);
-        printf("各試験日の日程\n");
+void enterToReturnMenu() {
+    int ch;
 
-        for (int i = 0; i < countExamDates; i++) {
-            printf("%s\n", printExamDates[i].exam_day);
+    printf("参照機能一覧へ戻ります。Enterを押してください...");
+    fflush(stdout);  // プロンプトを即座に表示
+
+    /* getchar()がEOFまたは改行を読み込むまでループ */
+    while ((ch = getchar()) != '\n') {
+        if (ch == EOF) {
+            // 入力エラーまたはストリームの終了の場合はループを抜ける
+            break;
         }
-}
-
-void SelectExamDateByUser(char* inputExamDate){
-    //ユーザーから日付を入力してもらい、それが一致するかどうかを判定する(全角２０２５－０１－０１は未対応、余力があればやる)
-    printf("受験者一覧を表示する試験実施日を指定してください(例: 2025-01-01 )\n\n");
-    if (fgets(inputExamDate, INPUT_BUFFER_SIZE, stdin) == NULL) {
-        fprintf(stderr, "入力エラーです。\n");
+        /* 余計な入力はそのまま読み捨てる */
     }
 }

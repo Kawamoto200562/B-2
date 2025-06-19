@@ -20,3 +20,27 @@ int wcwidth(wchar_t ucs) {
     // それ以外は半角幅とする
     return 1;
 }
+
+int wcswidth(const wchar_t* pwcs) {
+    int width = 0;
+    while (*pwcs) {
+        width += wcwidth(*pwcs);
+        pwcs++;
+    }
+    return width;
+}
+
+int get_dis_width(const char* str) {
+    wchar_t wstr[256];
+    size_t len;
+
+    setlocale(LC_ALL, "");  // ロケール設定（日本語）
+    len = mbstowcs(wstr, str, sizeof(wstr) / sizeof(wstr[0]));
+    if (len == (size_t)-1) return 0;
+
+    int width = 0;
+    for (size_t i = 0; i < len; i++) {
+        width += wcwidth(wstr[i]);
+    }
+    return width;
+}

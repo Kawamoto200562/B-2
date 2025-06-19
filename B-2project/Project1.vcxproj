@@ -143,11 +143,13 @@
   <ItemGroup>
     <ClCompile Include="DB_Connect.c" />
     <ClCompile Include="delete.c" />
-    <ClCompile Include="GetSubjectTopNames.c" />
     <ClCompile Include="inputcansel.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="main_db.c" />
+    <ClCompile Include="refer1.c" />
     <ClCompile Include="refer2.c" />
     <ClCompile Include="refer3.c" />
+    <ClCompile Include="reffer2db.c" />
     <ClCompile Include="register.c" />
     <ClCompile Include="sqlite3\sqlite3.c" />
     <ClCompile Include="wcwidth.c" />
@@ -155,10 +157,12 @@
   <ItemGroup>
     <ClInclude Include="DB_Connect.h" />
     <ClInclude Include="delete.h" />
-    <ClInclude Include="GetSubjectTopNames.h" />
     <ClInclude Include="inputcansel.h" />
+    <ClInclude Include="main_db.h" />
+    <ClInclude Include="refer1.h" />
     <ClInclude Include="refer2.h" />
     <ClInclude Include="refer3.h" />
+    <ClInclude Include="reffer2db.h" />
     <ClInclude Include="register.h" />
     <ClInclude Include="sqlite3\sqlite3.h" />
     <ClInclude Include="subjectEnum.h" />
