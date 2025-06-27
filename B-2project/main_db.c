@@ -341,7 +341,7 @@ int get_display_width_main(const wchar_t* ws) {
 
 void printExamineeList_main(sqlite3_stmt* stmt, const int currentPage, const int maxPage, bool sortByFuriganaAsc, int pageExamineeIds[], int *pageCount) {
 
-	printf("\nデータベースに登録されている受験者一覧");
+	printf("\n登録されている受験者一覧");
 	if (sortByFuriganaAsc == true) {
 		printf("(50音順)\n");
 	}

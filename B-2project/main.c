@@ -8,6 +8,8 @@
 #include "refer3.h"
 #include "delete.h"
 #include "main_db.h"
+#include <locale.h>
+#include <windows.h>
 
 void clear_stdin_buffer() {
     int c;
@@ -212,6 +214,9 @@ void show_reference_menu(sqlite3* db) {
 
 
 int main(void) {   
+    setlocale(LC_CTYPE, "");  
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
     sqlite3* db;
     int main_choice;
 
@@ -241,12 +246,12 @@ int main(void) {
 
             // 入力が空（空白や改行のみ）なら再入力
             if (input[0] == '\n') {
-                printf("空白は無効です。０から４の数字で入力してください。\n");
+                printf("空白は無効です。０から５の数字で入力してください。\n");
                 continue;
             }
 
             if (sscanf(input, "%d", &main_choice) != 1) {
-                printf("０から４の数字で入力してください。\n");
+                printf("０から５の数字で入力してください。\n");
                 continue;
             }
 
@@ -281,7 +286,7 @@ int main(void) {
             return 0;
         default:
             system("cls");
-            printf("無効な番号です。\n０から４の数字で入力してください。\n");
+            printf("無効な番号です。\n０から５の数字で入力してください。\n");
             break;
         }
 
